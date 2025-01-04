@@ -1,14 +1,12 @@
-import { Inter } from 'next/font/google'
-import './globals.css'
-import { ThemeProvider } from '@/components/theme-provider'
-import Header from '@/components/header'
+import "./globals.css"
+import { Inter } from "next/font/google"
+import { metadata } from "./metadata"
+import { Providers } from "./providers"
+import Header from "@/components/header"
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] })
 
-export const metadata = {
-  title: 'EduCode Platform',
-  description: 'Learn coding with interactive courses',
-}
+export { metadata }
 
 export default function RootLayout({
   children,
@@ -18,19 +16,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <Providers>
           <Header />
-          <main className="container mx-auto px-4 py-8">
-            {children}
-          </main>
-        </ThemeProvider>
+          <main className="container mx-auto px-4 py-8">{children}</main>
+        </Providers>
       </body>
     </html>
   )
 }
-
