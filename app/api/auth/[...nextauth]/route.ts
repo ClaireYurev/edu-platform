@@ -1,10 +1,9 @@
-import NextAuth from "next-auth";
+import NextAuth, { AuthOptions, Session, User } from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { prisma } from "@/lib/prisma";
 
-// Define auth options
-const authOptions = {
+const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     GithubProvider({
@@ -17,7 +16,7 @@ const authOptions = {
   },
   secret: process.env.NEXTAUTH_SECRET || "",
   callbacks: {
-    async session({ session, user }) {
+    async session({ session, user }: { session: Session; user: User }) {
       if (session.user) {
         session.user.id = user.id;
         session.user.isSubscribed = user.isSubscribed;
@@ -27,6 +26,7 @@ const authOptions = {
   },
 };
 
-// Export route handlers for GET and POST
+// Use NextAuth for both GET and POST methods
 const handler = NextAuth(authOptions);
+
 export { handler as GET, handler as POST };
