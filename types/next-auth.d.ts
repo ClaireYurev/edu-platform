@@ -1,19 +1,19 @@
 // types/next-auth.d.ts
-import NextAuth, { DefaultSession } from "next-auth"
+import NextAuth, { DefaultSession } from "next-auth";
 
 // Option 1: Augment the Session interface
 
 declare module "next-auth" {
   interface Session {
     user: {
-      id: string
-      isSubscribed: boolean
-    } & DefaultSession["user"]
+      id: string;
+      isSubscribed: boolean;
+    } & DefaultSession["user"];
   }
 
   interface User {
-    id: string
-    isSubscribed: boolean
+    id: string;
+    isSubscribed: boolean;
   }
 }
 
