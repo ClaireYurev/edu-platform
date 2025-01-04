@@ -16,7 +16,8 @@ export const authOptions: NextAuthOptions = {
   },
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    async session({ session, token, user }) {
+    // async session({ session, token, user }) {
+    async session({ session, user }) {
       // Example: attach isSubscribed to the session
       if (session.user) {
         session.user.id = user.id

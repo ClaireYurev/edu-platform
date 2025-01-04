@@ -4,10 +4,10 @@ import { createContext, useContext, useEffect, useState } from 'react'
 
 const ThemeContext = createContext({
   theme: 'light',
-  setTheme: (theme: string) => {},
+  setTheme: (_theme: string) => {},
 })
 
-export function ThemeProvider({ children }) {
+export function ThemeProvider({ children } : { children: any }) {
   const [theme, setTheme] = useState('light')
 
   useEffect(() => {
