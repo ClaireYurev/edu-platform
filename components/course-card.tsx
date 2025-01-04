@@ -3,7 +3,17 @@ import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/comp
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
-export default function CourseCard({ course }: { course: any }) {
+interface Course {
+  id: string;
+  title: string;
+  description: string;
+}
+
+interface CourseCardProps {
+  course: Course;
+}
+
+export default function CourseCard({ course }: CourseCardProps) {
   return (
     <Card>
       <CardHeader>
@@ -16,6 +26,5 @@ export default function CourseCard({ course }: { course: any }) {
         </Button>
       </CardFooter>
     </Card>
-  )
+  );
 }
-
