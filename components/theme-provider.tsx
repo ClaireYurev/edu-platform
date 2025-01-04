@@ -4,10 +4,12 @@ import { createContext, useContext, useEffect, useState } from 'react'
 
 const ThemeContext = createContext({
   theme: 'light',
-  setTheme: (_theme: string) => {},
+  setTheme: (theme: string) => {
+    console.log(`setTheme called with: ${theme}`); // Log the parameter
+  },
 })
 
-export function ThemeProvider({ children } : { children: any }) {
+export function ThemeProvider({ children }: { children: any }) {
   const [theme, setTheme] = useState('light')
 
   useEffect(() => {
@@ -22,4 +24,3 @@ export function ThemeProvider({ children } : { children: any }) {
 }
 
 export const useTheme = () => useContext(ThemeContext)
-
