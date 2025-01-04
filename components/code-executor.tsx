@@ -1,22 +1,27 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import { Button } from "@/components/ui/button"
-import { Textarea } from "@/components/ui/textarea"
+import { useState } from 'react';
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 
-export default function CodeExecutor({ language }) {
-  const [code, setCode] = useState('')
-  const [output, setOutput] = useState('')
+interface CodeExecutorProps {
+  language: string; // Programming language (e.g., "javascript", "python")
+}
+
+export default function CodeExecutor({ language }: CodeExecutorProps) {
+  const [code, setCode] = useState('');
+  const [output, setOutput] = useState('');
 
   const executeCode = async () => {
     const response = await fetch('/api/execute', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ code, language }),
-    })
-    const result = await response.json()
-    setOutput(result.output)
-  }
+    });
+
+    const result = await response.json();
+    setOutput(result.output);
+  };
 
   return (
     <div className="space-y-4">
@@ -34,6 +39,5 @@ export default function CodeExecutor({ language }) {
         </div>
       )}
     </div>
-  )
+  );
 }
-
