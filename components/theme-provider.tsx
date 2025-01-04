@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useState, ReactNode } from 'react'
 
 const ThemeContext = createContext({
   theme: 'light',
@@ -9,7 +9,7 @@ const ThemeContext = createContext({
   },
 })
 
-export function ThemeProvider({ children }: { children: any }) {
+export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState('light')
 
   useEffect(() => {

@@ -6,9 +6,9 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
 const courses = [
-  { id: 1, title: "Introduction to Python", description: "Learn the basics of Python programming" },
-  { id: 2, title: "Advanced JavaScript", description: "Master advanced JavaScript concepts" },
-  { id: 3, title: "Rust for Beginners", description: "Get started with Rust programming" },
+  { id: "1", title: "Introduction to Python", description: "Learn the basics of Python programming" },
+  { id: "2", title: "Advanced JavaScript", description: "Master advanced JavaScript concepts" },
+  { id: "3", title: "Rust for Beginners", description: "Get started with Rust programming" },
 ]
 
 export default async function CoursesPage() {
