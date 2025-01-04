@@ -2,19 +2,9 @@
 
 import { PrismaClient } from "@prisma/client";
 
-// Extend global object for better type safety
-// eslint-disable-next-line @typescript-eslint/no-namespace
-declare global {
-  namespace NodeJS {
-    interface Global {
-      prisma?: PrismaClient;
-    }
-  }
-}
-
 // Use the global object to store the PrismaClient instance in development.
 // This prevents multiple instances from being created due to hot-reloading.
-const globalForPrisma = global as NodeJS.Global;
+const globalForPrisma = global as typeof globalThis & { prisma?: PrismaClient };
 
 export const prisma =
   globalForPrisma.prisma ||
