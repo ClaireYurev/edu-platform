@@ -1,4 +1,4 @@
-import NextAuth, { NextAuthOptions, Session } from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { prisma } from "@/lib/prisma";
@@ -16,7 +16,7 @@ export const authOptions: NextAuthOptions = {
   },
   secret: process.env.NEXTAUTH_SECRET || "",
   callbacks: {
-    async session({ session, user }: { session: Session; user: any }) {
+    async session({ session, user }) {
       if (session.user) {
         session.user.id = user.id;
         session.user.isSubscribed = user.isSubscribed;
