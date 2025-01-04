@@ -3,6 +3,7 @@
 import { PrismaClient } from "@prisma/client";
 
 // Extend global object for better type safety
+// eslint-disable-next-line @typescript-eslint/no-namespace
 declare global {
   namespace NodeJS {
     interface Global {
